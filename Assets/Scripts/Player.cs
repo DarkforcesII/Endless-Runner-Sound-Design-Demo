@@ -1,9 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using MidiJack;
-using UniOSC;
-using OSCsharp.Data;
 
 public class Player : MonoBehaviour
 {
@@ -19,12 +16,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) || MidiDriver.Instance.GetKeyDown(MidiChannel.All, 67))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             targetPos = new Vector2(transform.position.x, transform.position.y + Yincrement);
             transform.position = targetPos;
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow) || MidiDriver.Instance.GetKeyDown(MidiChannel.All, 68))
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             targetPos = new Vector2(transform.position.x, transform.position.y - Yincrement);
             transform.position = targetPos;

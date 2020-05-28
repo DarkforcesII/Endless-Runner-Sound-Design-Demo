@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UniOSC;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -19,8 +18,8 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<UniOSCRotateGameObject>().health -= damage;
-            Debug.Log(other.GetComponent<UniOSCRotateGameObject>().health);
+            //other.GetComponent<UniOSCRotateGameObject>().health -= damage;
+            //Debug.Log(other.GetComponent<UniOSCRotateGameObject>().health);
             Destroy(gameObject);
         }
     }
