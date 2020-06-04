@@ -7,30 +7,36 @@ public class Player : MonoBehaviour
     private Vector2 targetPos;
     public float Yincrement;
 
-    // Start is called before the first frame update
-    void Start()
+    public AudioScript audioScript;
+    private int healthCounter = 5;
+
+    void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (other.CompareTag("Enemy"))
+        {
+            audioScript.PlayHitClips();
+            Destroy(other.gameObject);
+            healthCounter--;
+            if (healthCounter == 0)
+            {
+                Destroy(gameObject);
+                UnityEditor.EditorApplication.isPlaying = false;
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
             targetPos = new Vector2(transform.position.x, transform.position.y + Yincrement);
             transform.position = targetPos;
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
         {
             targetPos = new Vector2(transform.position.x, transform.position.y - Yincrement);
             transform.position = targetPos;
-        }
-
-        //midi controls
-        if (Input.GetKey(KeyCode.Space))
-        {
-
         }
     }
 }
