@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class AudioScript : MonoBehaviour
 {
-
+    [Tooltip("This is where you can place your own music intro.")]
     public AudioClip introClip;
+
+    [Tooltip("This is where you can place your own loop tracks. " +
+        "If you have more than 3, make sure to adjust the size.")]
     public AudioClip[] mainLoopClips;
     public AudioSource musicSource;
+
+    [Tooltip("This is where you can place your sound effects. " +
+        "If you have more than 3, make sure to adjust the size.")]
     public AudioClip[] playerHitClips;
     public AudioSource sfxSource;
 
